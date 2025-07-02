@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prenotazione</title>
+    <link rel="stylesheet" href="premotazione.css" />
+  </head>
+  <body>
+    <div class="booking-container">
+      <h1>Prenota il tuo tavolo</h1>
+
+      <!-- Barra di avanzamento (facoltativa) -->
+      <div class="progress-bar">
+        <div class="step-indicator active" id="step-indicator-1">
+          <span>1</span>
+          <p>Persone</p>
+        </div>
+        <div class="step-indicator" id="step-indicator-2">
+          <span>2</span>
+          <p>Data</p>
+        </div>
+        <div class="step-indicator" id="step-indicator-3">
+          <span>3</span>
+          <p>Orario</p>
+        </div>
+        <div class="step-indicator" id="step-indicator-4">
+          <span>4</span>
+          <p>Contatti</p>
+        </div>
+      </div>
+
+      <!-- IMPORTANT: Add your Formspree endpoint and method="POST" -->
+      <!-- Replace "https://formspree.io/f/abc123xy" with YOUR actual form endpoint -->
+      <form
+        id="bookingForm"
+        action="https://formspree.io/f/manqrjbq"
+        method="POST"
+      >
+        <!-- (Optional) If you want a custom "Thank You" page instead of the Formspree default -->
+        <!-- <input type="hidden" name="_next" value="https://tuosito.it/thank-you.html" /> -->
+
+        <!-- STEP 1: Seleziona numero di persone -->
+        <fieldset class="step active" data-step="1">
+          <h2>Quante persone sarete?</h2>
+          <div class="people-grid">
+            <button type="button" class="people-btn" data-value="1">1</button>
+            <button type="button" class="people-btn" data-value="2">2</button>
+            <button type="button" class="people-btn" data-value="3">3</button>
+            <button type="button" class="people-btn" data-value="4">4</button>
+            <button type="button" class="people-btn" data-value="5">5</button>
+            <button type="button" class="people-btn" data-value="6">6</button>
+            <button type="button" class="people-btn" data-value="7">7</button>
+            <button type="button" class="people-btn" data-value="8">8</button>
+          </div>
+          <input type="hidden" id="numPersone" name="numPersone" value="" />
+
+          <div class="step-controls">
+            <button type="button" class="next-button" disabled>Avanti</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2: Seleziona data -->
+        <fieldset class="step" data-step="2">
+          <h2>Seleziona la data</h2>
+          <input type="date" id="dataPrenotazione" name="dataPrenotazione" />
+
+          <div class="step-controls">
+            <button type="button" class="prev-button">Indietro</button>
+            <button type="button" class="next-button" disabled>Avanti</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 3: Seleziona orario -->
+        <fieldset class="step" data-step="3">
+          <h2>Per che ora vuoi prenotare?</h2>
+
+          <div class="time-grid">
+            <button type="button" class="time-btn" data-time="12:00">
+              12:00
+            </button>
+            <button type="button" class="time-btn" data-time="12:15">
+              12:15
+            </button>
+            <button type="button" class="time-btn" data-time="12:30">
+              12:30
+            </button>
+            <button type="button" class="time-btn" data-time="12:45">
+              12:45
+            </button>
+            <button type="button" class="time-btn" data-time="13:00">
+              13:00
+            </button>
+            <button type="button" class="time-btn" data-time="13:15">
+              13:15
+            </button>
+            <button type="button" class="time-btn" data-time="13:30">
+              13:30
+            </button>
+            <button type="button" class="time-btn" data-time="14:00">
+              14:00
+            </button>
+            <button type="button" class="time-btn" data-time="19:00">
+              19:00
+            </button>
+            <button type="button" class="time-btn" data-time="19:30">
+              19:30
+            </button>
+            <button type="button" class="time-btn" data-time="20:00">
+              20:00
+            </button>
+            <button type="button" class="time-btn" data-time="20:30">
+              20:30
+            </button>
+            <button type="button" class="time-btn" data-time="21:00">
+              21:00
+            </button>
+            <button type="button" class="time-btn" data-time="21:30">
+              21:30
+            </button>
+            <button type="button" class="time-btn" data-time="22:00">
+              22:00
+            </button>
+          </div>
+          <input
+            type="hidden"
+            id="oraPrenotazione"
+            name="oraPrenotazione"
+            value=""
+          />
+
+          <div class="step-controls">
+            <button type="button" class="prev-button">Indietro</button>
+            <button type="button" class="next-button" disabled>Avanti</button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 4: Dati di contatto -->
+        <fieldset class="step" data-step="4">
+          <h2>I tuoi dati di contatto</h2>
+
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required />
+
+          <label for="cognome">Cognome</label>
+          <input type="text" id="cognome" name="cognome" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="telefono">Cellulare</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="+39..."
+            required
+          />
+
+          <div class="step-controls">
+            <button type="button" class="prev-button">Indietro</button>
+            <!-- The final submit sends data to Formspree -->
+            <button type="submit" class="submit-button">
+              Conferma Prenotazione
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <script src="prenotazione.js"></script>
+  </body>
+</html>
